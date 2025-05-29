@@ -1,43 +1,58 @@
 @use "../../styles/variables.scss" as *;
 
 .graph {
+  // === Title ===
   & > h3 {
-    font-size: 1rem;
-    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: var(--dark);
+    font-family: 'Spectral', serif;
+    letter-spacing: 0.5px;
   }
 
+  // === Graph Container ===
   & > .graph-outer {
-    border-radius: 5px;
+    border-radius: 12px;
     border: 1px solid var(--lightgray);
+    background: linear-gradient(135deg, #fdfdfd, #f8f8f8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
     height: 250px;
-    margin: 0.5em 0;
+    margin: 1em 0;
     position: relative;
     overflow: hidden;
+    transition: box-shadow 0.3s ease;
 
+    &:hover {
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    // === Graph Icon (top-right) ===
     & > .global-graph-icon {
       cursor: pointer;
-      background: none;
       border: none;
       color: var(--dark);
-      opacity: 0.5;
-      width: 24px;
-      height: 24px;
+      opacity: 0.65;
+      width: 28px;
+      height: 28px;
       position: absolute;
-      padding: 0.2rem;
-      margin: 0.3rem;
+      padding: 0.4rem;
+      margin: 0.4rem;
       top: 0;
       right: 0;
-      border-radius: 4px;
-      background-color: transparent;
-      transition: background-color 0.5s ease;
-      cursor: pointer;
+      border-radius: 6px;
+      background-color: rgba(0, 0, 0, 0.03);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+
       &:hover {
-        background-color: var(--lightgray);
+        background-color: rgba(0, 0, 0, 0.07);
+        transform: scale(1.05);
       }
     }
   }
 
+  // === Global Graph Overlay ===
   & > .global-graph-outer {
     position: fixed;
     z-index: 9999;
@@ -45,18 +60,24 @@
     top: 0;
     width: 100vw;
     height: 100%;
-    backdrop-filter: blur(4px);
     display: none;
     overflow: hidden;
+
+    // ✅ Cross-browser blur support
+    
+   
+    background-color: rgba(255, 255, 255, 0.5); // fallback
 
     &.active {
       display: inline-block;
     }
 
+    // === Centered Graph Modal ===
     & > .global-graph-container {
       border: 1px solid var(--lightgray);
-      background-color: var(--light);
-      border-radius: 5px;
+      background: linear-gradient(145deg, var(--light), #ffffff);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       box-sizing: border-box;
       position: fixed;
       top: 50%;
@@ -64,9 +85,12 @@
       transform: translate(-50%, -50%);
       height: 80vh;
       width: 80vw;
+      padding: 1rem;
+      overflow: auto;
 
       @media all and not ($desktop) {
         width: 90%;
+        height: 90vh;
       }
     }
   }
