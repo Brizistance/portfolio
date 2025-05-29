@@ -1,6 +1,5 @@
 ---
-title: Welcome to Quartz
+title: Brizistance's portfolio
 ---
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+I will add more stuff in the future. For now, it will be pretty bland like my social life .-.
